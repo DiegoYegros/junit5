@@ -4,6 +4,8 @@ import com.junit.junit.models.Banco;
 import com.junit.junit.models.Cuenta;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -16,5 +18,12 @@ public class Data {
     }
     public static Optional<Banco> crearBanco001(){
         return Optional.of(new Banco(1L, "Banco de Bogota", 0));
+    }
+
+    public static List<Cuenta> crearListaCuentas() {
+        List<Cuenta> cuentas = new ArrayList<>();
+        cuentas.add(crearCuenta001().orElseThrow());
+        cuentas.add(crearCuenta002().orElseThrow());
+        return cuentas;
     }
 }
