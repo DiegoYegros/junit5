@@ -48,4 +48,22 @@ class CuentaTest {
         Cuenta cuenta3 = new Cuenta(3L, "Jane Doe", new BigDecimal("2000.00"));
         assertFalse(cuenta1.equals(cuenta3));
     }
+    @Test
+    public void testCredito(){
+        //Given
+        Cuenta cuenta = new Cuenta(1L, "John Doe", new BigDecimal("1000.00"));
+        //When
+        cuenta.credito(new BigDecimal("1000.00"));
+        //Then
+        assertEquals(new BigDecimal("2000.00"), cuenta.getSaldo());
+    }
+    @Test
+    public void testDebito(){
+        //Given
+        Cuenta cuenta = new Cuenta(1L, "John Doe", new BigDecimal("1000.00"));
+        //When
+        cuenta.debito(new BigDecimal("1000.00"));
+        //Then
+        assertEquals(new BigDecimal("0.00"), cuenta.getSaldo());
+    }
 }

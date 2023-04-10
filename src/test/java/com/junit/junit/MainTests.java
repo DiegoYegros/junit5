@@ -7,17 +7,13 @@ import com.junit.junit.models.Cuenta;
 import com.junit.junit.repositories.BancoRepository;
 import com.junit.junit.repositories.CuentaRepository;
 import com.junit.junit.services.CuentasService;
-import com.junit.junit.services.CuentasServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
 import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigDecimal;
 import java.util.List;
@@ -132,5 +128,9 @@ class MainTests {
 		assertEquals(1, cuenta2.getId());
 		assertEquals("Andres Guzman", cuenta2.getPersona());
 		verify(cuentaRepository).save(cuenta);
+	}
+	@Test
+	public void testMain(){
+		Main.main(new String[]{});
 	}
 }

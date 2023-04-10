@@ -26,34 +26,28 @@ public class CuentasServiceImpl implements CuentasService{
     public List<Cuenta> findAll() {
         return cuentaRepository.findAll();
     }
-
     @Override
     @Transactional
     public Cuenta save(Cuenta cuenta) {
         return cuentaRepository.save(cuenta);
     }
-
     @Override
     @Transactional(readOnly = true)
     public Cuenta findById(Long id) {
-
         return cuentaRepository.findById(id).orElseThrow();
     }
-
     @Override
     @Transactional(readOnly = true)
     public int revisarTotalTransferencias(Long bancoId) {
        Banco banco = bancoRepository.findById(bancoId).orElseThrow();
        return banco.getTotalTransferencia();
     }
-
     @Override
     @Transactional(readOnly = true)
     public BigDecimal revisarSaldo(Long cuentaId) {
         Cuenta cuenta = cuentaRepository.findById(cuentaId).orElseThrow();
         return cuenta.getSaldo();
     }
-
     @Override
     @Transactional
     public void transferir(Long cuentaOrigenId, Long cuentaDestinoId, BigDecimal monto, Long bancoId) {
@@ -68,5 +62,11 @@ public class CuentasServiceImpl implements CuentasService{
         Cuenta cuentaDestino = cuentaRepository.findById(cuentaDestinoId).orElseThrow();
         cuentaDestino.credito(monto);
         cuentaRepository.save(cuentaDestino);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+        cuentaRepository.deleteById(id);
     }
 }
