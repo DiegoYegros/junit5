@@ -28,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith(SpringExtension.class)
+@Tag("integration_wtc")
 public class CuentraControllerWebTestsClientTest {
     @Autowired
     private WebTestClient webTestClient;
